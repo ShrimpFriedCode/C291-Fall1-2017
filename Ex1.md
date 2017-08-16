@@ -2,7 +2,7 @@
 
 ## Overview
 
-* Setup your git repository (watch the videos provided first)
+* Setup your git repository (watch the videos provided on Canvas first)
 * Write a C program, run it, and commit it back to your repository. 
 
 ## 1 Setting up your Repositories
@@ -18,33 +18,33 @@ tutorial, make sure you're using "ssh -T git@github.iu.edu".**
 ### 1.2 Making Your Github Repository
 
 * Create a private repository on IU github called
-  **C291-Summer-2017**. You should have read chapter 1-2 of the
+  **C291-Fall1-2017**. You should have read chapter 1-2 of the
   [Pro Git Book](https://git-scm.com/book/en/v2). You will need to
   know how to clone a repository, add files, commit them, and push
-  them. Add **aabhutta**, **raakprem** as collaborators so that they
+  them. Add **aabhutta**, **ranagara**, **bmerugur** as collaborators so that they
   can grade the work that you commit to your repository.
 
 ### 1.3 Duplication of the Course Repository
 
-The [course repository](https://github.iu.edu/SOIC-C-Unix/Summer-2017)
+The [course repository](https://github.iu.edu/SOIC-C-Unix/Fall1-2017)
 will be duplicated using the steps. 
 
 * Change directories to a scratch area. Create a bare clone of the
-  Summer-2017 repository using:
+  Fall1-2017 repository using:
 
 ```bash
-git clone --bare git@github.iu.edu:SOIC-C-UNIX/Summer-2017.git
+git clone --bare git@github.iu.edu:SOIC-C-UNIX/Fall1-2017.git
 ```
 
 Note: If you did not configure SSH yet, you can use the HTTP link to the repository instead (DON'T DO BOTH)
 ```bash
-git clone --bare https://github.iu.edu/SOIC-C-UNIX/Summer-2017.git
+git clone --bare https://github.iu.edu/SOIC-C-UNIX/Fall1-2017.git
 ```
 
-* Enter the Summer-2017.git directory
+* Enter the Fall1-2017.git directory
 
 ```bash
-cd Summer-2017.git
+cd Fall1-2017.git
 ```
 
 * Push this repo data to your new repository replacing **yourreponame** with the appropriate git@github.iu.edu address or http address from step 1.2. You can find the exact address by clicking on the green "clone or download" button in your repository on gitHub site. 
@@ -53,11 +53,11 @@ cd Summer-2017.git
 git push --mirror yourreponame
 ```
 
-* If all went well and your shared repository has the data, you can remove the Summer-2017.git directory because it is no longer needed.
+* If all went well and your shared repository has the data, you can remove the Fall1-2017.git directory because it is no longer needed.
 
 ```bash
 cd ..
-rm -rf Summer-2017.git
+rm -rf Fall1-2017.git
 ```
 
 ### 1.4) Remote Setup
@@ -67,14 +67,14 @@ remote for your repository. This repository will be updated
 periodically with new lab material. Adding an upstream remote will
 allow you to keep your copy synchronized with updated lab material.
 
-* Clone your **C291-Summer-2017** to your home directory.
+* Clone your **C291-Fall1-2017** to your home directory.
 ```bash
 git clone yourreponame
 ```
-* cd into the C291-Summer-2017 directory. Add an upstream remote to your repository. Be sure to use the correct repo link/name.
+* cd into the C291-Fall1-2017 directory. Add an upstream remote to your repository. Be sure to use the correct repo link/name.
 
 ```bash
-git remote add upstream git@github.iu.edu:SOIC-C-Unix/Summer-2017.git
+git remote add upstream git@github.iu.edu:SOIC-C-Unix/Fall1-2017.git
 ```
 
 * In the future, you can pull in updates to the course repository using a fetch command.
@@ -89,9 +89,8 @@ In this section of the lab assignment you will
 write, compile, and run a simple C program. Additionally, you will
 learn how to control its process from the shell.
 
-Create a directory named **ex_wk1** in the root of your repository. Create a file named **hello.c**, write a C
-program that prints "Hello, world" (and then starts a new line), every
-three seconds, forever, or rather until it is killed. You can copy a file to get you started from exercises/wk1. You should copy this file rather than working in this directory. 
+Create a directory named **exercises/wk1** in the root of your repository. Create a file named **hello.c**, write a C
+program that prints "Hello, world" once (and then starts a new line), and then prints a dot (.) every second, forever, or rather until it is killed. You can copy a file to get you started from exercises/wk1. You should copy this file rather than working in this directory. 
 
 You can use an infinite while or for loop (with syntax similar to
 Java or found in A Short Tutorial on C.pdf on Canvas) to loop forever. For the five second delay, use the function
@@ -162,7 +161,3 @@ In turning in your code, your will need to take two actions.
    * Click on "commits". This link will also include the total commits completed for this repo.
    * For the specific commit that includes your assigment, click on the hash id for this commit. You can then grab the link from the address bar in the browser.
    * Submit this link in Canvas for the assignment.
-
-
-
-
