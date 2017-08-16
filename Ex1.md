@@ -89,8 +89,8 @@ In this section of the lab assignment you will
 write, compile, and run a simple C program. Additionally, you will
 learn how to control its process from the shell.
 
-Create a directory named **exercises/wk1** in the root of your repository. Create a file named **hello.c**, write a C
-program that prints "Hello, world" once (and then starts a new line), and then prints a dot (.) every second, forever, or rather until it is killed. You can copy a file to get you started from exercises/wk1. You should copy this file rather than working in this directory. 
+Create a directory named **exercise/wk1** in the root of your repository. Create a file named **hello.c**, write a C
+program that prints "Hello, world" once (and then starts a new line), and then prints a dot (.) every second, forever, or rather until it is killed. You can copy a file to get you started from exercise/wk1. You should copy this file rather than working in this directory. 
 
 You can use an infinite while or for loop (with syntax similar to
 Java or found in A Short Tutorial on C.pdf on Canvas) to loop forever. For the five second delay, use the function
