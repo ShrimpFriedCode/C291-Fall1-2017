@@ -21,7 +21,7 @@ tutorial, make sure you're using "ssh -T git@github.iu.edu".**
   **C291-Fall1-2017**. You should have read chapter 1-2 of the
   [Pro Git Book](https://git-scm.com/book/en/v2). You will need to
   know how to clone a repository, add files, commit them, and push
-  them. Add **aabhutta**, **ranagara**, **bmerugur** as collaborators so that they
+  them. Add **aabhutta**, **ranagara**, **bmerugur**, **rahpsing** as collaborators so that they
   can grade the work that you commit to your repository.
 
 ### 1.3 Duplication of the Course Repository
