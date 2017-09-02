@@ -1,19 +1,20 @@
 /*Debugging quiz - File No: 3 */
 /* The program should give out the appropriate message, given the grade as input */
 
-#include<stdoi.h>
+#include <stdio.h>
 
-int main(void) {
+int main() {
 	char input;
-	printf("Enter the grade (A/B/C/D/F): (Q to Quit) \n")
-	while((input == getchar() != 'Q' );{
-		if(input = 'F' | input = 'D'){
-			printf("You have not passed the course.\\n");
+	printf("Enter the grade (A/B/C/D/F): (Q to Quit) \n");
+	while((input != 'Q' )){
+		input = getchar();
+		if(input == 'F' || input == 'D'){
+			printf("You have not passed the course.\n");
 		}
-		elseif(input == 'A' | input == 'B' | input == 'C') {
+		else if(input == 'A' || input == 'B' || input == 'C') {
 			printf("You have passed!\n");
 		}
 	}
-	printf("Quit the menu.\n");
-	return;
+	printf("Quited the menu.\n");
+	return 0;
 }

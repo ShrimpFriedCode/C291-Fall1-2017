@@ -2,28 +2,40 @@
 /* This program should perform the duties of a basic calculator */
 // Check for possible logical errors and rectify them 
 
-#include<stdio.h>
+#include <stdio.h>
 
-int main(void){
+int main(){
 	char input;
 	float num1, num2, result;
 	printf("Welcome to the Calculator\nOperation choices:\tAddition(A)\n\t\t\tSubtraction(S)\n\t\t\tMultiplication(M)\n\t\t\tDivision(D)\nEnter choice: ");
-	scanf("%C",input);
+	scanf(" %c", &input);
 	if(input == 'A' || input == 'S' || input == 'M' || input == 'D'){
-		printf("Enter both numbers in required sequence: ");
-		scanf("%d%d",num1,num2);
-		switch("input"):
-			case A: result = num1 + num2;
+		printf("Enter both numbers in required sequence:\n");
+		printf("Enter number 1: ");
+		scanf(" %f", &num1);
+		printf("Enter number 2: ");
+		scanf(" %f", &num2);
+		switch(input){
+			case 'A': result = num1 + num2;
           			break;
-			case S: result = num1 - num2;
+			case 'S': result = num1 - num2;
           			break;
-			case M: result = num1 * num2;
+			case 'M': result = num1 * num2;
           			break;
-			case D: result = num1 / num2;		//Are there any logical errors possible? If so, how will you solve it? 
-	 			break;                			  
+			case 'D': if(num2 != 0 || num2 != 0.0){
+				result = num1 / num2;
+				}
+				else{
+				printf("Cannot divide by zero.\n");
+				}		//Are there any logical errors possible? If so, how will you solve it? 
+	 			break; 			  
 			default: break;
-		if(num2 !=0 || num2 != 0.0){
-			printf("The final result = %f\n", result);
+		}
+		if(input == 'D' && num2 == 0){
+			printf("No answer due to invalid input.\n");	
+		}
+		else{
+			printf("The answer = %f\n", result);
 		}
 	}
 	else{
