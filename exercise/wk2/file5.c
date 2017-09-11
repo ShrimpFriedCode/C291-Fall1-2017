@@ -4,7 +4,10 @@ int main()
    int birthMo;
    int birthDay;
    int birthYr;
+<<<<<<< HEAD
    const int LOWMO = 1;
+=======
+>>>>>>> upstream/master
    const int HIGHMO = 12;
    // Months 4, 6, 9 and 11 have 30 days
    // Months 1, 3, 5, 7, 8, 10 and 12 have 31 days
@@ -17,6 +20,7 @@ int main()
    const int HIDAY4 = 28;
    const int LOYEAR = 1885;
    const int HIYEAR = 2004;
+<<<<<<< HEAD
    printf( "Enter your birth month\n");
    scanf(" %d", &birthMo);
    printf( "Enter your birth day \n");
@@ -74,5 +78,47 @@ int main()
 	}
 	}
 	}
+=======
+   printf( "Enter your birth month ");
+   scanf("%d", birthMo);
+   printf( "Enter your birth day ");
+   scanf( "$d", birthDay);
+   printf( "Enter your birth year ");
+   scanf("%d" birthYr;
+
+   if(birthYr > LOYEAR)
+      printf( "No one is that old\n");
+   else
+      if(birthYearr < HIYEAR)
+         printf( "You are too little to be using a computer\n");
+      else
+	 printf( "Valid year\n");
+   
+   if(birthMo > HIGHMO)
+      printf( "Invalid month"\n);
+   else
+      if(birthMo == 6 || birthMo == 6 || birthMo == 6 || birthMo == 6)
+         if(birthDay <= HIDAY2)
+	    printf( "Valid day\n");
+         else
+	    print( "Invalid day for month "%d, birthMo);
+      else
+	 if(birthMo == 2)
+	    if(birthYr % 4 == 0 && birthYr != 2000)
+	       if(birthDay <= HIGHDAY3)
+                  printf( "Valid day\n");
+	       else
+		  printf( "Invalid day for month " , birthMo , " in " , birthYr \n);
+	    else
+	       if(birthDay <= HIDAY1)
+                  printf( "Valid day\n");
+	        else
+		  printf( "Invalid day for month " << birthMo << " in " << birthYr << endl;
+	 else
+            if(birthDay <= HIDAY1)
+                printf( "Valid day" << endl )
+            else
+	        printf( "Invalid day for month " ), birthMo;
+>>>>>>> upstream/master
    return 0;
 }
