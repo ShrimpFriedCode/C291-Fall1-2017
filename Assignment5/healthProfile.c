@@ -1,9 +1,10 @@
+//Ethan Anderson
+
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
 
 
-struct healthProfile{
+struct healthProfile{//struct for HP
 
 	char fname[15], lname[15], gender;
 	int height;
@@ -14,26 +15,24 @@ struct healthProfile{
 			int day;
 			int year;
 
-		}DOB;
+		}DOB;//accessor for dob struct
 };
 
-typedef struct healthProfile HealthProfile; 
+typedef struct healthProfile HealthProfile; //set as type
 
 
 void setHP(HealthProfile *ret, char firstn[], char lastn[], char gen, int h, int w, int mon, int da, int ye){
 	
-	int i;	
-	
-	strncpy(ret->fname, firstn, 15);
+	strncpy(ret->fname, firstn, 15);//copy arrays over
 
 	strncpy(ret->lname, lastn, 15);
 	
-	ret->gender = gen;
+	ret->gender = gen;//copy gender char
 	
-	ret->height = h;
+	ret->height = h;//copy h, w
 	ret->weight = w;
 	
-	ret->DOB.month = mon;
+	ret->DOB.month = mon;//copt dob data
 	ret->DOB.day = da;
 	ret->DOB.year = ye;
 	
@@ -41,20 +40,20 @@ void setHP(HealthProfile *ret, char firstn[], char lastn[], char gen, int h, int
 
 int getAge(HealthProfile *hp){
 
-	return 2017 - hp->DOB.year;
+	return 2017 - hp->DOB.year;//subtract current year by birth year for age
 
 }
 
 int maxHr(HealthProfile *hp){
 
-	return 220 - getAge(hp);
+	return 220 - getAge(hp);//forumula for heart rate
 
 }
 
 int * targetHr(HealthProfile *hp){
 
 	static int range[2];
-	int maxH = maxHr(hp);
+	int maxH = maxHr(hp);//add range as array for ease of printf use
 
 	range[0] = maxH * .5;
 	range[1] = maxH * .85;
@@ -64,7 +63,7 @@ int * targetHr(HealthProfile *hp){
 
 int getBMI(HealthProfile *hp){
 
-	return (hp->weight * 703)/(hp->height * hp->height);
+	return (hp->weight * 703)/(hp->height * hp->height);//formula for BMI
 }
 
 int main(){
@@ -105,13 +104,13 @@ int w;
 printf("Please enter your weight in pounds : ");
 scanf(" %d", &w);
 
-HealthProfile userHP;
+HealthProfile userHP;//create new HP
 
-HealthProfile *userPtr = &userHP;
+HealthProfile *userPtr = &userHP;//create pointer
 
-setHP(userPtr, userF, userL, gen, h, w, m, d, y);
+setHP(userPtr, userF, userL, gen, h, w, m, d, y);//update HP with user input
 
-printf("\nYour age is : %d\n", getAge(userPtr));
+printf("\nYour age is : %d\n", getAge(userPtr));//print statements
 
 printf("Your BMI is : %d\n", getBMI(userPtr));
 
@@ -119,6 +118,6 @@ printf("Your maximum heart rate is : %d\n", maxHr(userPtr));
 
 printf("Your target heart rate is between %d and %d\n\n\n", targetHr(userPtr)[0], targetHr(userPtr)[1]);
 
-printf("BMI VALUES\nUnderweight: \tless than 18.5\nNormal: \tbetween 18.5 and 24.9\nOverweight: \tbetween 25 and 29.9\nObese: \t\t30 or greater\n\n\n");
+printf("BMI VALUES\nUnderweight: \tless than 18.5\nNormal: \tbetween 18.5 and 24.9\nOverweight: \tbetween 25 and 29.9\nObese: \t\t30 or greater\n\n\n");//BMI chart
 
 }
