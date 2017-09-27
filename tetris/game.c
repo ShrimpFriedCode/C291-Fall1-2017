@@ -94,9 +94,19 @@ int game(void) {
 	  break;
 	case LEFT:
 	  mvprintw(10,10,"LEFT          ");
+   	  undisplay_tetromino(current);	
+	  move_tet(current, (current->upper_left_x - 1), (current->upper_left_y));
+	  start_color();
+	  init_pair(1, COLOR_RED, COLOR_RED);
+	  attron(COLOR_PAIR(1));
+	  display_tetromino(current); 
+	  attroff(COLOR_PAIR(1));
 	  break;
 	case RIGHT:
 	  mvprintw(10,10,"RIGHT         ");
+          undisplay_tetromino(current);
+          move_tet(current, (current->upper_left_x + 1), (current->upper_left_y));
+          display_tetromino(current);
 	  break;
 	case REGCHAR: 
 	  mvprintw(10,10,"REGCHAR 0x%02x",c);
