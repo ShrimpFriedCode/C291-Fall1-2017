@@ -60,13 +60,13 @@ highscore_t *game(highscore_t *highscores) {
   int move_counter = 0;
   int move_timeout = 500;
   int status;
-  int statusTry;
+  int statusTry;//int to try and add a piece to play
   int counter = 0;
   int lines_cleared = 0;
-  int score = 0;
+  int score = 0;//score
   char str[80];
-  int timec = 0;
-  int time_c = 0;  
+  int timec = 0;//actual time in seconds
+  int time_c = 0;//tracker for seconds
   int co = 1;//iteration of current color pair
   int time_out = 0;
 
@@ -96,12 +96,12 @@ highscore_t *game(highscore_t *highscores) {
       }
       statusTry = move_tet(current,current->upper_left_x,current->upper_left_y+1);
 
-      if(statusTry == MOVE_FAILED){
-      state = GAME_OVER;
+      if(statusTry == MOVE_FAILED){//try to add a piece
+      state = GAME_OVER;//if can't add without collision, end game
       break;
       }
       else{
-      statusTry = move_tet(current,current->upper_left_x,current->upper_left_y-1);
+      statusTry = move_tet(current,current->upper_left_x,current->upper_left_y-1);//else undo move
       }
       int r = ( rand() % 6) + 1; //random selector for color
       current->color[0] = co;//assign color to color properties of tet
@@ -161,26 +161,26 @@ highscore_t *game(highscore_t *highscores) {
 	display_tetromino(current);
 	attroff(COLOR_PAIR(co));
 	if (status == MOVE_FAILED) {
-	  lines_cleared += prune_well(w);
-	  score = compute_score(score, (lines_cleared));
-	  lines_cleared = 0;
+	  lines_cleared += prune_well(w);//clear lines
+	  score = compute_score(score, (lines_cleared));//calculate score
+	  lines_cleared = 0;//reset lines cleared
 	  state = ADD_PIECE;
 	  co++;
 	  move_timeout = BASE_FALL_RATE;
 	}
 
-        display_score(score, w->upper_left_x-15,w->upper_left_y);
+        display_score(score, w->upper_left_x-15,w->upper_left_y);//display score every tick
 
 	move_counter = 0;
       }
-      if (time_c++ == 1000){
-	timec++;
-	display_time(timec, w->upper_left_x-15,w->upper_left_y+5); 
-	time_c = 0;
+      if (time_c++ == 1000){//counter for seconds
+	timec++;//if 1000ms, add 1 second to count
+	display_time(timec, w->upper_left_x-15,w->upper_left_y+5);//update the time 
+	time_c = 0;//reset tracker
 	}
-      if (time_out++ == 300000){
+      if (time_out++ == 300000){//if 5 mins have passed
 
-	state = GAME_OVER;
+	state = GAME_OVER;//end game
 
       }
       break;
