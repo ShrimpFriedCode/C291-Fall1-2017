@@ -133,7 +133,8 @@ highscore_t *game(highscore_t *highscores) {
       display_tetromino(next);
       attroff(COLOR_PAIR(co+1));
       move_tet(next, w->upper_left_x+(w->width/2), w->upper_left_y);//reset next to play field
-      move_timeout = BASE_FALL_RATE;//reset fall rate
+      r = (rand() % 500);
+      move_timeout = BASE_FALL_RATE - r;//reset fall rate
       state = MOVE_PIECE;
       break;
     case MOVE_PIECE:         // Move the current piece 
