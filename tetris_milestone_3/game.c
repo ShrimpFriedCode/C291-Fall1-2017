@@ -70,7 +70,8 @@ highscore_t *game(highscore_t *highscores) {
   int co = 1;//iteration of current color pair
   int time_out = 0;
   int r = 0;
-
+  highscore_t *scores = NULL;
+ 
   while(1) {
     switch(state) {
     case INIT:               // Initialize the game, only run one time 
@@ -134,7 +135,7 @@ highscore_t *game(highscore_t *highscores) {
       attroff(COLOR_PAIR(co+1));
       move_tet(next, w->upper_left_x+(w->width/2), w->upper_left_y);//reset next to play field
       r = (rand() % 500);
-      move_timeout = BASE_FALL_RATE - r;//reset fall rate
+      move_timeout = BASE_FALL_RATE;//reset fall rate
       state = MOVE_PIECE;
       break;
     case MOVE_PIECE:         // Move the current piece 
@@ -208,14 +209,23 @@ highscore_t *game(highscore_t *highscores) {
       }
       break;
     case GAME_OVER:
+
+
+
+      scores = load_scores("hs.txt");
+      scores = insert_score(scores, "EMA", score);
+      //store_scores("hs.txt", scores);      
+      print_score_list(scores, x/2-5, 1, 10);
+
+
       nodelay(stdscr,FALSE);
       clear();
       getmaxyx(stdscr,y,x);
-      mvprintw(1,x/2-5,"  GAME_OVER  ");
-      mvprintw(2,x/2-5,"#############");
-      mvprintw(5,x/2-5,"    SCORE    ");
-      mvprintw(6,x/2-5,"      %d     ", score);
-      mvprintw(16,x/2-5,"Hit q to exit");
+      //mvprintw(1,x/2-5,"  GAME_OVER  ");
+      //mvprintw(2,x/2-5,"#############");
+      //mvprintw(5,x/2-5,"    SCORE    ");
+      //mvprintw(6,x/2-5,"      %d     ", score);
+      //mvprintw(16,x/2-5,"Hit q to exit");
       getch(); // Wait for a key to be pressed. 
       state = EXIT;
       break;
