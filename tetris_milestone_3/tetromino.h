@@ -43,7 +43,7 @@ typedef struct tetromino {
   int color[3];
 } tetromino_t;
 
-extern const tetromino_t tetromino_types[7];
+extern const tetromino_t tetromino_types[9];
 
 enum {SAFE, COLLIDE}; // Return status for check_collision 
 int check_collision (tetromino_t *);

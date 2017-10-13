@@ -140,8 +140,8 @@ highscore_t *game(highscore_t *highscores) {
       move_tet(next, w->upper_left_x+(w->width/2), w->upper_left_y);//reset next to play field
       r = (rand() % 500);
 
-      isType1 = strcmp("block", current->type_str);
-      isType2 = strcmp("pipe", current->type_str);
+      isType1 = strcmp("u", current->type_str);
+      isType2 = strcmp("x", current->type_str);
 
       if(isType1 == 0 || isType2 == 0){
 

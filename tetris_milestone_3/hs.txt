@@ -1,11 +1,1 @@
-ema,0
-ttu,0
-EAA,0
-QWE,0
-qqq,0
-qqq,0
-qqq,0
-qqq,0
-qqq,0
-noo,0
-qqq,-24
+

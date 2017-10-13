@@ -41,7 +41,7 @@
 #include <ncurses.h>
 #include "tetromino.h"
 
-const tetromino_t tetromino_types[7] = {
+const tetromino_t tetromino_types[9] = {
   {"block",
    {{0,0,0,0}, 
     {0,1,1,0},
@@ -101,6 +101,24 @@ const tetromino_t tetromino_types[7] = {
     {0,1,0,0},
     {0,1,0,0},
     {0,1,0,0}}, 
+   0,
+   0,
+   '%',
+   {0,0,0}},
+  {"u", 
+   {{0,0,0,0},
+    {1,0,0,1},
+    {1,1,1,1},
+    {0,0,0,0}},
+   0,
+   0,
+   '%',
+   {0,0,0}},
+  {"x",
+   {{0,0,1,0},
+    {0,1,1,1},
+    {0,0,1,0},
+    {0,0,0,0}},
    0,
    0,
    '%',
@@ -181,7 +199,7 @@ int rotate_ccw(tetromino_t *tet) {
 tetromino_t *create_tetromino (int initial_x, int initial_y) {
   int type;
   tetromino_t *tet = malloc(sizeof(tetromino_t));
-  type = rand()%7;
+  type = rand()%9;
   memcpy(tet, &tetromino_types[type], sizeof(tetromino_t));
   tet->upper_left_x = initial_x;
   tet->upper_left_y = initial_y;
