@@ -41,7 +41,7 @@
 #define NUM_SCORES_STORED 10
 
 typedef struct highscore {
-  char initials[NAME_SIZE+1];
+  char initials[4];
   int score;
   struct highscore *next;
 } highscore_t;

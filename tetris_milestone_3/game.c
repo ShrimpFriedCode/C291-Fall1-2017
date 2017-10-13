@@ -42,6 +42,7 @@
 #include "tetris.h"
 #include "tetromino.h"
 #include "key.h"
+#include <string.h>
 
 void init_game(void) {
   int x,y;
@@ -70,7 +71,10 @@ highscore_t *game(highscore_t *highscores) {
   int co = 1;//iteration of current color pair
   int time_out = 0;
   int r = 0;
+  char inita[4];
   highscore_t *scores = NULL;
+  int isType1;
+  int isType2;
  
   while(1) {
     switch(state) {
@@ -120,7 +124,7 @@ highscore_t *game(highscore_t *highscores) {
       statusTry = move_tet(current,current->upper_left_x,current->upper_left_y+1);
 
       if(statusTry == MOVE_FAILED || current->upper_left_x == (w->upper_left_x+44)){//try to add a piece
-      state = GAME_OVER;//if can't add without collision, end game
+      state = ENTER_NAME;//if can't add without collision, end game
       break;
       }
       else{
@@ -135,7 +139,19 @@ highscore_t *game(highscore_t *highscores) {
       attroff(COLOR_PAIR(co+1));
       move_tet(next, w->upper_left_x+(w->width/2), w->upper_left_y);//reset next to play field
       r = (rand() % 500);
-      move_timeout = BASE_FALL_RATE;//reset fall rate
+
+      isType1 = strcmp("block", current->type_str);
+      isType2 = strcmp("pipe", current->type_str);
+
+      if(isType1 == 0 || isType2 == 0){
+
+		move_timeout = BASE_FALL_RATE-r;
+	
+	}
+	else{
+		move_timeout = BASE_FALL_RATE;
+	}
+
       state = MOVE_PIECE;
       break;
     case MOVE_PIECE:         // Move the current piece 
@@ -173,7 +189,7 @@ highscore_t *game(highscore_t *highscores) {
 	    move_timeout = DROP_RATE;
  	  }
 	  if (c == 'q') {
-	    state = GAME_OVER;
+	    state = ENTER_NAME;
  	  }
 	}
       } 
@@ -204,28 +220,42 @@ highscore_t *game(highscore_t *highscores) {
 	}
       if (time_out++ == 300000){//if 5 mins have passed
 
-	state = GAME_OVER;//end game
+	state = ENTER_NAME;//end game
 
       }
       break;
-    case GAME_OVER:
-
-
-
-      scores = load_scores("hs.txt");
-      scores = insert_score(scores, "EMA", score);
-      //store_scores("hs.txt", scores);      
-      print_score_list(scores, x/2-5, 1, 10);
-
-
+    case ENTER_NAME:
+	
       nodelay(stdscr,FALSE);
       clear();
       getmaxyx(stdscr,y,x);
-      //mvprintw(1,x/2-5,"  GAME_OVER  ");
-      //mvprintw(2,x/2-5,"#############");
-      //mvprintw(5,x/2-5,"    SCORE    ");
-      //mvprintw(6,x/2-5,"      %d     ", score);
-      //mvprintw(16,x/2-5,"Hit q to exit");
+
+      mvprintw(1,x/2-5,"  GAME_OVER  ");
+      mvprintw(2,x/2-5,"#############");
+
+      mvprintw(5,x/2-10,"Please Enter Your Initals: ");
+
+      echo();
+      mvgetstr(6, x/2, inita); 
+      noecho();
+
+      state = GAME_OVER;  
+      break;
+    case GAME_OVER:
+      nodelay(stdscr,FALSE);
+      clear();
+      getmaxyx(stdscr,y,x);
+      mvprintw(1,x/2-5,"  GAME_OVER  ");
+      mvprintw(2,x/2-5,"#############");
+      mvprintw(5,x/2-5,"    SCORE    ");
+      mvprintw(6,x/2-5,"      %d     ", score);
+      mvprintw(21,x/2-5,"Hit q to exit");
+      mvprintw(8,x/2-5," HIGHSCORES  ");
+      scores = load_scores("hs.txt");
+      //scores = insert_score(scores, inita, score); //IF we use this, the user's score this game shows, but may not actually be inserted due to invalid length 
+      print_score_list(scores, x/2-2, 10, 10);
+      scores = insert_score(scores, inita, score); //If we use this, the user's current score will not show, but invalid entries will not show as well.
+      store_scores("hs.txt", scores);
       getch(); // Wait for a key to be pressed. 
       state = EXIT;
       break;

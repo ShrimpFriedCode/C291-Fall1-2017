@@ -124,7 +124,7 @@ highscore_t *load_scores(char *filename) {
   return (head);
 }
 
-highscore_t *insert_score(highscore_t *list, char * initials, int score) {
+highscore_t *insert_score(highscore_t *list, char *initials, int score) {
   highscore_t *current = NULL;
   highscore_t *next = NULL;
   highscore_t *new_item = NULL;
@@ -132,7 +132,7 @@ highscore_t *insert_score(highscore_t *list, char * initials, int score) {
 
   new_item = malloc(sizeof(highscore_t));
   if (new_item) {
-    strncpy(new_item->initials,initials,NAME_SIZE-1);
+    strncpy(new_item->initials,initials, 4);
     new_item->score = score;
   }
   if (!list) {
